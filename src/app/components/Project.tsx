@@ -1,4 +1,7 @@
-import React from "react";
+"use client";
+import React, { useState } from "react";
+import { ProjectTag } from "./ProjectTag";
+import { ProjectCard } from "./ProjectCard";
 
 const projectData = [
   {
@@ -61,5 +64,52 @@ const projectData = [
 ];
 
 export const Project = () => {
-  return <div>Project</div>;
+  const [tag, setTag] = useState("All");
+
+  const handeltagChange = (newTag: React.SetStateAction<string>) => {
+    setTag(newTag);
+  };
+  const filteredProject = projectData.filter((project) =>
+    project.tag.includes(tag)
+  );
+  return (
+    <div id="Project" className="container mb-16">
+      <h2 className=" text-center text-4xl font-bold text-white mt-4 mb-8">
+        My Project
+      </h2>
+      <div className=" text-white flex flex-row justify-center items-center gap-2 py-6">
+        <ProjectTag
+          onClick={handeltagChange}
+          name="All"
+          isSelected={tag === "All"}
+        />
+        <ProjectTag
+          onClick={handeltagChange}
+          name="Web"
+          isSelected={tag === "Web"}
+        />
+        <ProjectTag
+          onClick={handeltagChange}
+          name="Design"
+          isSelected={tag === "Design"}
+        />
+      </div>
+      <div
+        data-aos="zoom-in"
+        data-aos-delay="200"
+        className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
+      >
+        {filteredProject.map((project) => (
+          <ProjectCard
+            key={project.id}
+            title={project.title}
+            description={project.description}
+            imgUrl={project.image}
+            getUrl={project.getUrl}
+            previewUrl={project.previewUrl}
+          />
+        ))}
+      </div>
+    </div>
+  );
 };

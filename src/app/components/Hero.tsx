@@ -26,7 +26,10 @@ const AchavmentList = [
 
 export const Hero = () => {
   return (
-    <section id="Hero" className="container lg:px-10 p-10 lg:pt-20">
+    <section
+      id="Hero"
+      className=" scroll-smooth container lg:px-10 p-10 lg:pt-20"
+    >
       <div className="flex flex-col lg:flex-row pb-10">
         <div className="w-5/8">
           <h1 className="text-white mb-4 md:text-center text-center lg:text-start text-4xl lg:text-6xl font-extrabold">
@@ -58,7 +61,7 @@ export const Hero = () => {
           </p>
           <div className="text-center  lg:text-start ">
             <Link
-              href={"#contact"}
+              href={"#Contact"}
               className="px-5 py-2 rounded-full w-full sm:w-fit mr-4  bg-blue-500 text-white"
             >
               contact me
