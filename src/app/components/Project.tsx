@@ -95,8 +95,8 @@ export const Project = () => {
         />
       </div>
       <div
-        data-aos="zoom-in"
-        data-aos-delay="200"
+        data-aos="fade-up"
+        data-aos-duration="1000"
         className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-12"
       >
         {filteredProject.map((project) => (

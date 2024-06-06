@@ -1,8 +1,10 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import React from "react";
 import Image from "next/image";
 import { TapButton } from "./TapButton";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const skillsData = {
   skills: ["JavaScript", "React", "Next.js", "Node.js", "Express", "Figma"],
@@ -17,10 +19,23 @@ export const About = () => {
   const [selectedButton, setSelectedButton] = useState<
     "skills" | "Education" | "Experionce"
   >("skills");
+
+  useEffect(() => {
+    AOS.init({
+      offset: 200,
+      duration: 500,
+      easing: "ease-in-sine",
+    });
+  }, []);
   return (
     <section id="About" className="container mb-16">
       <div className="flex flex-col lg:flex-row">
-        <div className="w-full lg:w-1/2 ">
+        <div
+          data-aos="flip-left"
+          data-aos-easing="ease-out-cubic"
+          data-aos-duration="2000"
+          className="w-full lg:w-1/2 "
+        >
           {" "}
           <Image
             className="w-full lg:h-[550px]"
